@@ -8,10 +8,12 @@
  */
 int main(void)
 {
-	char *msg = "Holberton\n";
+	char *msg = "Holberton";
+	int i;
 
-	while (*msg != '\0')
-		_putchar(*msg++);
+	for(i = 0; i < 10; i++)
+		_putchar(msg[i]);
 
+	_putchar('\n');
 	return (0);
 }
