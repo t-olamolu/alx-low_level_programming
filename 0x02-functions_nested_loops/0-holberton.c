@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	char *msg = "Holberton";
+	char *msg = "_putchar";
 	int i;
 
 	for (i = 0; i < 10; i++)
