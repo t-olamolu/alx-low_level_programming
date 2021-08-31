@@ -8,7 +8,7 @@
  */
 int main(void)
 {
-	char *msg = "_putchar\n"
+	char *msg = "_putchar\n";
 
 	while (*msg != '\0')
 		_putchar(*msg++);
