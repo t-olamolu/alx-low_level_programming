@@ -8,19 +8,22 @@
  */
 int main(void)
 {
-	int n;
+	int i;
 
-	for (n = 1; n <= 100; n++)
+	for (i = 1; i <= 100; i++)
 	{
-		if (n % 3 == 0 && n % 5 == 0)
-			printf("FizzBuzz ");
-		else if (n % 3 == 0)
-		printf("Fizz ");
-		else if (n % 5 == 0)
-		printf("Buzz ");
+		char fizz = i % 3 == 0;
+		char buzz = i % 5 == 0;
+
+		if (i != 1)
+			printf(" ");
+
+		if (fizz || buzz)
+			printf(fizz && buzz ? "FizzBuzz" : fizz ? "Fizz" : "Buzz");
 		else
-			printf("%d ", n);
-}
-	printf("Buzz\n");
+			printf("%d", i);
+	}
+	printf("\n");
+
 	return (0);
 }
