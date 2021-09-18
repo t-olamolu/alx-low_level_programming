@@ -1,6 +1,6 @@
 #include <unistd.h>
 #include <stdio.h>
-#include "main.h"
+
 /**
  * _putchar - writes the character c to stdout
  * @c: The character to print
@@ -182,34 +182,12 @@ char *_strncat(char *dest, char *src, int n)
 }
 
 /**
- * _strncpy - copies  src to dest
- * @dest: array to overwrite
- * @src: array to copy from
- * @n: max bytes to copy
- *
- * Return: dest
- */
-
-char *_strncpy(char *dest, char *src, int n)
-{
-	char *dest_tmp = dest;
-
-	while (n && (*dest++ = *src++))
-		--n;
-	while (n-- > 0)
-		*(dest++ - 1) = 0;
-
-	return (dest_tmp);
-}
-
-/**
  * _strcmp - compares s1 with s2
  * @s1: a string
  * @s2: a string
  *
  * Return: difference of the first non-matching character pair
  */
-
 int _strcmp(char *s1, char *s2)
 {
 	int diff = 0;
@@ -324,4 +302,24 @@ char *_strstr(char *haystack, char *needle)
 			return (haystack_tmp);
 	}
 	return (0);
+}
+
+/**
+ * _strncpy - copies  src to dest
+ * @dest: array to overwrite
+ * @src: array to copy from
+ * @n: max bytes to copy
+ *
+ * Return: dest
+ */
+char *_strncpy(char *dest, char *src, int n)
+{
+	char *dest_tmp = dest;
+
+	while (n && (*dest++ = *src++))
+		--n;
+	while (n-- > 0)
+		*(dest++ - 1) = 0;
+
+	return (dest_tmp);
 }
