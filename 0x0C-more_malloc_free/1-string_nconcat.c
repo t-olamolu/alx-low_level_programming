@@ -2,32 +2,41 @@
 #include "main.h"
 
 /**
- * string_nconcat - appends n chars from s2 to s1 in a new string
- * @s1: base string
- * @s2: src string
- * @n: number of chars to append to s1
- *
- * Return: a new string
+ * string_nconcat - the returned pointer shall point to a newly allocated
+ * space in memory, which contains s1, followe by the firs n bytes of s2,
+ * and null terminated
+ * Description: if n is greater or equal to the length of s2 then
+ * use the entire string s2
+ * Return: If NULL is passed, treat it as an empty string
+ * @s1: first string
+ * @s2: second string
+ * @n: size
  */
+
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *str, *str_tmp;
-	unsigned int i = 0, len_1 = 0, len_2 = 0;
+	char *s;
+	unsigned int i = 0, j = 0, length1 = 0, length2 = 0;
 
-	s1 = s1 == NULL ? "" : s1, s2 = s2 == NULL ? "" : s2;
-	for (; s1[len_1]; ++len_1)
-		continue;
-	for (; s2[len_2] && len_2 < n; ++len_2)
-		continue;
-
-	str = malloc(sizeof(char) * (len_1 + len_2 + 1)), str_tmp = str;
-
-	if (str == NULL)
+	while (s1 && s1[length1])
+		length1++;
+	while (s2 && s2[length2])
+		length2++;
+	if (n < length2)
+		s = malloc(sizeof(char) * (length1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (length1 + length2 + 1));
+	if (!s)
 		return (NULL);
-	while (*s1)
-		*str++ = *s1++;
-	for (; i < len_2; i++)
-		*str++ = *s2++;
-	*str = '\0';
-	return (str_tmp);
+	while (i < length1)
+	{
+		s[i] = s1[i];
+		i++;
+	}
+	while (n < length2 && i < (length1 + n))
+		s[i++] = s2[j++];
+	while (n >= length2 && i < (length1 + length2))
+		s[i++] = s2[j++];
+	s[i] = '\0';
+	return (s);
 }
